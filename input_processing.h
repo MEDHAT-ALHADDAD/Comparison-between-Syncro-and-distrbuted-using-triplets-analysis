@@ -12,10 +12,12 @@ using namespace std;
 typedef pair<string, int> ii;
 typedef vector<string> si;
 typedef vector<ii> vii;
-typedef map<string,int> msi;
+typedef pair<int, float> fp;
+typedef map<string, fp> msi;
 
 string trim_String(string& s);
 si to_triplets(string& s);
 msi triplet_frequency(si& tri);
+void triplet_percentage(msi& tri);
 void print_triplets(si& tri);
 void print_frequency(msi& tri_freq);

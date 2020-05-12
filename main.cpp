@@ -2,7 +2,7 @@
 
 //(@name: main)
 //(@signature: argc,argv ->int)
-//(@purpose: initthe program)
+//(@purpose: init the program)
 //
 //(@progress: completed)
 //(@template: cmd$make run)
@@ -11,17 +11,18 @@ int main(int argc, char const *argv[])
     freopen("InputSeq.dat.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 
-    string sequance,temp;
+    string sequence,temp;
     si triplets;
     msi frequency;
 
     while (cin >> temp)
     {
         temp = trim_String(temp);
-        sequance += temp;
+        sequence += temp;
     }
-    triplets = to_triplets(sequance);
+    triplets = to_triplets(sequence);
     frequency = triplet_frequency(triplets);
-    // print_triplets(triplets);
+	triplet_percentage(frequency);
+    //print_triplets(triplets);
     print_frequency(frequency);
 }
