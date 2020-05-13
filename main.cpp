@@ -13,7 +13,7 @@ int main(int argc, char const *argv[])
 
     string sequence,temp;
     si triplets;
-    msi frequency;
+    msfp frequency;
 
     while (cin >> temp)
     {

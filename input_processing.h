@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <omp.h>
 
 using namespace std;
 
@@ -13,11 +14,13 @@ typedef pair<string, int> ii;
 typedef vector<string> si;
 typedef vector<ii> vii;
 typedef pair<int, float> fp;
-typedef map<string, fp> msi;
+typedef map<string, fp> msfp;
+typedef map<string, int> msi;
 
 string trim_String(string& s);
 si to_triplets(string& s);
-msi triplet_frequency(si& tri);
-void triplet_percentage(msi& tri);
+msfp triplet_frequency(si& tri);
+void triplet_percentage(msfp& tri);
 void print_triplets(si& tri);
-void print_frequency(msi& tri_freq);
+void print_frequency(msfp& tri_freq);
+void init_acids(msi& acid);

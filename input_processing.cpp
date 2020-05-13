@@ -39,9 +39,11 @@ si to_triplets(string& s){
 //
 //(@progress: completed)
 //(@template: $map<string,int>  = triplet_frequency( $vector<string> ))
-msi triplet_frequency(si& tri){
-    msi frequency;
+msfp triplet_frequency(si& tri){
+    msfp frequency;
+#pragma omp parallel
     for(auto& s:tri){
+#pragma omp atomic
         frequency[s].first++;
 		total++;
     }
@@ -53,9 +55,11 @@ msi triplet_frequency(si& tri){
 //(@purpose: Calculate the percentage of each triplet)
 //(@progress: completed)
 //(@template: triplet_percentage( $map<string,pair<int, float> ))
-void triplet_percentage(msi& tri)
+void triplet_percentage(msfp& tri)
 {
+#pragma omp parallel
 	for (auto& s : tri) {
+#pragma omp critical
 		tri[s.first].second = (s.second.first / total) * 100;
 	}
 }
@@ -79,9 +83,33 @@ void print_triplets(si& tri){
 // final output
 //(@progress: completed)
 //(@template: print_frequency( $map<string,int> ))
-void print_frequency(msi& tri_freq){
+void print_frequency(msfp& tri_freq){
     for(auto& s:tri_freq){
 		cout << s.first << ":" << s.second.first << "   " << s.second.second << "%" << endl;
     }
 }
 
+void init_acids(msi& acid)
+{
+	acid["Phe"] = 0;
+	acid["Leu"] = 0;
+	acid["Lle"] = 0;
+	acid["Met"] = 0;
+	acid["Pro"] = 0;
+	acid["Val"] = 0;
+	acid["Ser"] = 0;
+	acid["Thr"] = 0;
+	acid["Ala"] = 0;
+	acid["Tyr"] = 0;
+	acid["Stop"] = 0;
+	acid["Hls"] = 0;
+	acid["Gln"] = 0;
+	acid["Asn"] = 0;
+	acid["Lys"] = 0;
+	acid["Asp"] = 0;
+	acid["Glu"] = 0;
+	acid["Arg"] = 0;
+	acid["Trp"] = 0;
+	acid["Cys"] = 0;
+	acid["Gly"] = 0;
+}
