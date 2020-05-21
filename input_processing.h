@@ -3,6 +3,7 @@
 #include <vector>
 #include <map>
 #include <omp.h>
+#include <string>
 
 using namespace std;
 

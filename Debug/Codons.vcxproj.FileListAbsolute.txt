@@ -1,0 +1,2 @@
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\dc_project\Debug\Codons.exe
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\dc_project\Debug\Codons.pdb

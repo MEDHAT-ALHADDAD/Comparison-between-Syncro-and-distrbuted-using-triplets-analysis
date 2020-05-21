@@ -1,19 +1,24 @@
 #include "input_processing.h"
 
 float total = 0;
+si keys;
 //(@name: trim_string)
 //(@signature: string& s -> string)
 //(@purpose: take ptr to string and trim non alpha char and return to upper string)
 //
 //(@progress: completed)
 //(@template: $vector<string> = trim_string( $string ))
-string trim_String(string& s){    
-    string result;
-    for (auto& ch:s)
-    {
-        if(isalpha(ch)){result.pb(toupper(ch));}
-    }
-    return result;
+string trim_String(string& s) {
+	string result;
+	char c;
+	for (int i = 0; i < s.length(); i++)
+	{
+			if (isalpha(s[i])) {
+				c = toupper(s[i]);
+				result.pb(c);
+			}
+	}
+	return result;
 }
 
 //(@name: to_triplets)
@@ -22,13 +27,13 @@ string trim_String(string& s){
 //
 //(@progress: completed)
 //(@template: $vector<string> = to_triplets( $string ))
-si to_triplets(string& s){
-    si tri;
-    FOR(i,s.length()){
-        if (i%3 == 0){tri.pb("");}
-        tri.back().pb(s[i]);
-    }
-    return tri;
+si to_triplets(string& s) {
+	si tri;
+	FOR(i, s.length()) {
+		if (i % 3 == 0) { tri.pb(""); }
+		tri.back().pb(s[i]);
+	}
+	return tri;
 }
 
 
@@ -39,15 +44,17 @@ si to_triplets(string& s){
 //
 //(@progress: completed)
 //(@template: $map<string,int>  = triplet_frequency( $vector<string> ))
-msfp triplet_frequency(si& tri){
-    msfp frequency;
-#pragma omp parallel
-    for(auto& s:tri){
-#pragma omp atomic
-        frequency[s].first++;
-		total++;
-    }
-    return frequency;
+msfp triplet_frequency(si& tri) {
+	keys = tri;
+	msfp frequency;
+	#pragma omp parallel for schedule(static)
+	for (int i = 0; i < tri.size(); i++) {
+		//#pragma omp atomic
+		frequency[tri[i]].first++;
+		//total++;
+	}
+	total = tri.size();
+	return frequency;
 }
 
 //(@name: triplet_percentage)
@@ -57,10 +64,11 @@ msfp triplet_frequency(si& tri){
 //(@template: triplet_percentage( $map<string,pair<int, float> ))
 void triplet_percentage(msfp& tri)
 {
-#pragma omp parallel
-	for (auto& s : tri) {
-#pragma omp critical
-		tri[s.first].second = (s.second.first / total) * 100;
+	int number_of_keys = (int)total;
+	#pragma omp parallel for schedule(static)
+	for (int i = 0; i < number_of_keys; i++) {
+		//#pragma omp critical
+		tri[keys[i]].second = (tri[keys[i]].first / total) * 100;
 	}
 }
 
@@ -70,10 +78,10 @@ void triplet_percentage(msfp& tri)
 // for debug
 //(@progress: completed)
 //(@template: print_triplets( $vector<string> ))
-void print_triplets(si& tri){
-    for(auto& s:tri){
-        cout << s << "\n";
-    }
+void print_triplets(si& tri) {
+	for (auto& s : tri) {
+		cout << s << "\n";
+	}
 }
 
 
@@ -83,10 +91,10 @@ void print_triplets(si& tri){
 // final output
 //(@progress: completed)
 //(@template: print_frequency( $map<string,int> ))
-void print_frequency(msfp& tri_freq){
-    for(auto& s:tri_freq){
+void print_frequency(msfp& tri_freq) {
+	for (auto& s : tri_freq) {
 		cout << s.first << ":" << s.second.first << "   " << s.second.second << "%" << endl;
-    }
+	}
 }
 
 void init_acids(msi& acid)
