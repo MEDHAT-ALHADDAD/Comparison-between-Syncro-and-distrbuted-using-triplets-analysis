@@ -15,7 +15,7 @@ int main(int argc, char const* argv[])
 	si triplets;
 	msfp frequency;
 
-	omp_set_num_threads(4);
+	omp_set_num_threads(8);
 
 	double tick = omp_get_wtime();
 //#pragma omp parallel 

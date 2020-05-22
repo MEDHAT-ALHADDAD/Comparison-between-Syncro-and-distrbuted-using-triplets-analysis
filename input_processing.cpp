@@ -46,14 +46,31 @@ si to_triplets(string& s) {
 //(@template: $map<string,int>  = triplet_frequency( $vector<string> ))
 msfp triplet_frequency(si& tri) {
 	keys = tri;
+	int triplet_vector_size = tri.size();
 	msfp frequency;
+	map<string, omp_lock_t> hist_locks;
+	vector<omp_lock_t> locks;
+	locks.resize(triplet_vector_size);
+	#pragma omp parallel for schedule(static)
+	for (int i = 0; i < locks.size(); i++) {
+		omp_init_lock(&locks[i]);
+		omp_set_lock(&locks[i]);
+		hist_locks[tri[i]] = locks[i];
+		omp_unset_lock(&locks[i]);
+	}
 	#pragma omp parallel for schedule(static)
 	for (int i = 0; i < tri.size(); i++) {
 		//#pragma omp atomic
+		omp_set_lock(&hist_locks[tri[i]]);
 		frequency[tri[i]].first++;
+		omp_unset_lock(&hist_locks[tri[i]]);
 		//total++;
 	}
-	total = tri.size();
+	#pragma omp parallel for schedule(static)
+	for (int i = 0; i < locks.size(); i++) {
+		omp_destroy_lock(&hist_locks[tri[i]]);
+	}
+	total = triplet_vector_size;
 	return frequency;
 }
 
