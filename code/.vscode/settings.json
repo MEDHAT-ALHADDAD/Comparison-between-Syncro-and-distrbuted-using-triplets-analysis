@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.js": "javascriptreact",
+        "*.rmd": "markdown",
+        "iosfwd": "cpp",
+        "fstream": "cpp",
+        "*.tcc": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "atomic": "cpp",
+        "string": "cpp"
+    }
+}
