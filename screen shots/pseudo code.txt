@@ -1,0 +1,460 @@
+start main code
+{
+    serial_proccessing
+    nonserial_proccessing
+    parallel_proccessing
+    tasks_proccessing
+    sections_proccessing
+}
+end main code
+
+
+
+______________________________________________________________________________________________________________________________________________________________
+
+serial_proccessing
+{
+    open files for read and write
+
+    while there is a line in the input file
+        serial_trim_String(input_line)
+        add to sequance the new input_line
+
+    create a vector of strings using serial_to_triplets(sequance)
+
+    start timer
+
+    get serial_triplet_frequency
+    get serial_triplet_percentage
+    get serial_acid_frequency
+    get serial_acid_percentage
+
+    end timer
+
+    print the triplets frequency 
+    print the codins frequency
+    print time taken
+}
+
+
+serial_trim_String
+{
+    for each string input
+        remove non alpha letters and make all letters upper
+}
+
+
+serial_to_triplets
+{
+    for each string input
+        add each adj three letters in a vector element
+}
+
+
+serial_triplet_frequency
+{
+    for (auto string : inut vector)
+    {
+        frequency[s].first++
+    }
+}
+
+
+serial_triplet_percentage
+{
+    for each element in the triplets vector 
+        Calculate percentage
+        add it to the vector
+}
+
+
+serial_acid_frequency
+{
+    for each element in input vector
+        use add_acids() to get acid type
+        increment the frequency by one
+}
+
+
+serial_acid_percentage
+{
+    for each element in the acid vector 
+        Calculate percentage
+        add it to the vector
+}
+
+
+serial_add_acids
+{
+    return the mapped acid to input triplet
+}
+
+
+init_acids
+{
+   for each triplet element 
+        increace relevant acid element
+}
+
+
+
+
+_______________________________________________________________________________________________________________________________________________________
+//same as serial but using vector instead of map in impelmentation
+
+nonserial_proccessing
+{
+    open files for read and write
+
+    while there is a line in the input file
+        serial_trim_String(input_line)
+        add to sequance the new input_line
+
+    create a vector of strings using serial_to_triplets(sequance)
+
+    start timer
+
+    get nonserial_triplet_frequency
+    get nonserial_triplet_percentage
+    get nonserial_acid_frequency
+    get nonserial_acid_percentage
+
+    end timer
+
+    print the triplets frequency 
+    print the codins frequency
+    print time taken
+}
+
+
+nonserial_trim_String
+{
+    for each string input
+        remove non alpha letters and make all letters upper
+}
+
+
+nonserial_to_triplets
+{
+    for each string input
+        add each adj three letters in a vector element
+}
+
+
+nonserial_triplet_frequency
+{
+    for (auto string : inut vector)
+    {
+        frequency[s].first++
+    }
+}
+
+
+nonserial_triplet_percentage
+{
+    for each element in the triplets vector 
+        Calculate percentage
+        add it to the vector
+}
+
+
+nonserial_acid_frequency
+{
+    for each element in input vector
+        use add_acids() to get acid type
+        increment the frequency by one
+}
+
+
+nonserial_acid_percentage
+{
+    for each element in the acid vector 
+        Calculate percentage
+        add it to the vector
+}
+
+
+nonserial_add_acids
+{
+    return the mapped acid to input triplet
+}
+
+
+init_acids
+{
+   for each triplet element 
+        increace relevant acid element
+}
+
+
+_______________________________________________________________________________________________________________________________________________________
+
+
+parallel_proccessing
+{
+    open files for read and write
+
+    while there is a line in the input file
+        serial_trim_String(input_line)
+        add to sequance the new input_line
+
+    create a vector of strings using serial_to_triplets(sequance)
+
+    start timer
+
+    get parallel_triplet_frequency
+    get parallel_triplet_percentage
+    get parallel_acid_frequency
+    get parallel_acid_percentage
+
+    end timer
+
+    print the triplets frequency 
+    print the codins frequency
+    print time taken
+}
+
+
+parallel_trim_String
+{
+    for each string input
+        remove non alpha letters and make all letters upper
+}
+
+
+parallel_to_triplets
+{
+    for each string input
+        add each adj three letters in a vector element
+}
+
+
+parallel_triplet_frequency
+{
+    #pragma for loop to divided iterations
+    for (auto string : inut vector)
+    {
+        frequency[s].first++
+    }
+}
+
+
+parallel_triplet_percentage
+{
+    #pragma for loop to divided iterations
+    for each element in the triplets vector 
+        Calculate percentage
+        add it to the vector
+}
+
+
+parallel_acid_frequency
+{
+    #pragma for loop to divided iterations
+    for each element in input vector
+        use add_acids() to get acid type
+        increment the frequency by one
+}
+
+
+parallel_acid_percentage
+{
+     #pragma for loop to divided iterations
+    for each element in the acid vector 
+        Calculate percentage
+        add it to the vector
+}
+
+
+parallel_add_acids
+{
+    return the mapped acid to input triplet
+}
+
+
+
+_______________________________________________________________________________________________________________________________________________________
+
+
+tasks_proccessing
+{
+    open files for read and write
+
+    while there is a line in the input file
+        tasks_trim_String(input_line)
+        add to sequance the new input_line
+
+    create a vector of strings using tasks_to_triplets(sequance)
+
+    start timer
+
+    get tasks_triplet_frequency
+    get tasks_triplet_percentage
+    get tasks_acid_frequency
+    get tasks_acid_percentage
+
+    end timer
+
+    print the triplets frequency 
+    print the codins frequency
+    print time taken
+}
+
+
+tasks_trim_String
+{
+    for each string input
+        remove non alpha letters and make all letters upper
+}
+
+
+tasks_to_triplets
+{
+    for each string input
+        add each adj three letters in a vector element
+}
+
+
+tasks_triplet_frequency
+{
+    #pragma tasks  to divided size of vector on each task
+    for (auto string : inut vector)
+    {
+        frequency[s].first++
+    }
+}
+
+
+tasks_triplet_percentage
+{
+    #pragma tasks  to divided size of vector on each task
+    for each element in the triplets vector 
+        Calculate percentage
+        add it to the vector
+}
+
+
+tasks_acid_frequency
+{
+    #pragma tasks  to divided size of vector on each task
+    for each element in input vector
+        use add_acids() to get acid type
+        increment the frequency by one
+}
+
+
+tasks_acid_percentage
+{
+    #pragma tasks  to divided size of vector on each task
+    for each element in the acid vector 
+        Calculate percentage
+        add it to the vector
+}
+
+
+tasks_add_acids
+{
+    return the mapped acid to input triplet
+}
+
+
+init_acids
+{
+   for each triplet element 
+        increace relevant acid element
+}
+
+
+
+
+_______________________________________________________________________________________________________________________________________________________
+
+
+sections_proccessing
+{
+    open files for read and write
+
+    while there is a line in the input file
+        serial_trim_String(input_line)
+        add to sequance the new input_line
+
+    create a vector of strings using sections_to_triplets(sequance)
+
+    start timer
+
+    get sections_triplet_frequency
+    get sections_triplet_percentage
+    get sections_acid_frequency
+    get sections_acid_percentage
+
+    end timer
+
+    print the triplets frequency 
+    print the codins frequency
+    print time taken
+}
+
+
+sections_trim_String
+{
+    for each string input
+        remove non alpha letters and make all letters upper
+}
+
+
+sections_to_triplets
+{
+    for each string input
+        add each adj three letters in a vector element
+}
+
+
+sections_triplet_frequency
+{
+    #pragma sections  to divided size of vector on each known number of sections manually
+    for (auto string : inut vector)
+    {
+        frequency[s].first++
+    }
+}
+
+
+sections_triplet_percentage
+{
+    #pragma sections  to divided size of vector on each known number of sections manually
+    for each element in the triplets vector 
+        Calculate percentage
+        add it to the vector
+}
+
+
+sections_acid_frequency
+{
+    #pragma sections  to divided size of vector on each known number of sections manually
+    for each element in input vector
+        use add_acids() to get acid type
+        increment the frequency by one
+}
+
+
+sections_acid_percentage
+{
+    #pragma sections  to divided size of vector on each known number of sections manually
+    for each element in the acid vector 
+        Calculate percentage
+        add it to the vector
+}
+
+
+sections_add_acids
+{
+    return the mapped acid to input triplet
+}
+
+
+init_acids
+{
+   for each triplet element 
+        increace relevant acid element
+}
+
